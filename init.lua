@@ -16,6 +16,6 @@ vim.opt.signcolumn = "yes"
 vim.g.have_nerd_font = true
 
 -- Tabs & indentation
-vim.opt.tabstop = 4                 -- Number of spaces that a <Tab> counts for
-vim.opt.shiftwidth = 4             -- Size of an indent
+vim.opt.tabstop = 2                 -- Number of spaces that a <Tab> counts for
+vim.opt.shiftwidth = 2             -- Size of an indent
 vim.opt.expandtab = true           -- Use spaces instead of tabs
