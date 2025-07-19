@@ -8,7 +8,7 @@ return {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "onsails/lspkind.nvim",
-    "zbirenbaum/copilot-cmp", -- Added for Copilot integration
+    "zbirenbaum/copilot-cmp",
   },
   opts = function()
     vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
