@@ -8,3 +8,7 @@ vim.opt.signcolumn = "yes"
 
 -- Use Nerd Font-compatible symbols
 vim.g.have_nerd_font = true
+
+-- Theme
+vim.opt.background = "dark" -- set this to dark or light
+vim.cmd("colorscheme oxocarbon")
