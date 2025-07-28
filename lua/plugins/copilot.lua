@@ -1,6 +1,6 @@
 return {
  
-  {
+  { -- Copilot Lua
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     config = function()
@@ -38,7 +38,7 @@ return {
     end,
   },
 
-  {
+  { -- Copilot CMP
     "zbirenbaum/copilot-cmp",
 
     config = function()
