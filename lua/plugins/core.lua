@@ -47,77 +47,98 @@ return {
     version = "v2.*",
     build = "make install_jsregexp"
   },
-
-  { -- COQ
-    "neovim/nvim-lspconfig", 
-    lazy = false,
-    dependencies = {
-      { "ms-jpq/coq_nvim", branch = "coq" },
-      { "ms-jpq/coq.artifacts", branch = "artifacts" },
-      { 'ms-jpq/coq.thirdparty', branch = "3p" }
-    },
-    init = function()
-      vim.g.coq_settings = {
-        auto_start = true,
-        keymap = {recommended = false,}, 
-      }
-    end,
-    config = function()
-        vim.api.nvim_set_keymap('i', '<Esc>', [[pumvisible() ? "\<C-e><Esc>" : "\<Esc>"]], { expr = true, silent = true })
-        vim.api.nvim_set_keymap('i', '<C-c>', [[pumvisible() ? "\<C-e><C-c>" : "\<C-c>"]], { expr = true, silent = true })
-        vim.api.nvim_set_keymap('i', '<BS>', [[pumvisible() ? "\<C-e><BS>" : "\<BS>"]], { expr = true, silent = true })
-        vim.api.nvim_set_keymap(
-          "i",
-          "<CR>",
-          [[pumvisible() ? (complete_info().selected == -1 ? "\<C-e><CR>" : "\<C-y>") : "\<CR>"]],
-          { expr = true, silent = true }
-        )
-        vim.api.nvim_set_keymap('i', '<C-j>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true, silent = true })
-        vim.api.nvim_set_keymap('i', '<C-k>', [[pumvisible() ? "\<C-p>" : "\<BS>"]], { expr = true, silent = true })
-    end,
-  },
-
-  { -- Mason
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate", 
-    config = function()
-
-      require("mason").setup()
-    end,
-  },
-
-  { -- Mason LSPConfig
-    "williamboman/mason-lspconfig.nvim",
-
-    dependencies = { "williamboman/mason.nvim" },
-
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "pyright",
-        },
-        automatic_installation = true,
-      })
-    end,
-  },
   
-  { -- Mason Null
-    "jay-babu/mason-null-ls.nvim",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "nvimtools/none-ls.nvim",
-    },
-    config = function()
-      require("mason-null-ls").setup({
-        ensure_installed = {
-          "black",
-          "pylint",
-          "isort",
-          "autopep8"
-        },
-        automatic_installation = true,
-      })
+  { -- CMP
+    "hrsh7th/nvim-cmp",
+    version = false,
+    event = "InsertEnter",
 
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "onsails/lspkind.nvim",
+      "zbirenbaum/copilot-cmp",
+    },
+
+    opts = function()
+      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+
+      local cmp = require("cmp")
+      local lspkind = require("lspkind")
+      local luasnip = require("luasnip")
+      local defaults = require("cmp.config.default")()
+
+      local has_words_before = function()
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+      end
+
+      local kind_icons = {
+        Text = "",
+        Method = "󰆧",
+        Function = "󰊕",
+        Constructor = "",
+        Field = "󰇽",
+        Variable = "󰂡",
+        Class = "󰠱",
+        Interface = "",
+        Module = "",
+        Property = "󰜢",
+        Unit = "",
+        Value = "󰎠",
+        Enum = "",
+        Keyword = "󰌋",
+        Snippet = "",
+        Color = "󰏘",
+        File = "󰈙",
+        Reference = "",
+        Folder = "󰉋",
+        EnumMember = "",
+        Constant = "󰏿",
+        Struct = "󰙅",
+        Event = "",
+        Operator = "󰆕",
+        TypeParameter = "󰆩",
+      }
+
+      return {
+        completion = {
+          completeopt = "menu,menuone,noselect",
+        },
+        preselect = cmp.PreselectMode.None,
+
+        mapping = cmp.mapping.preset.insert({
+          ["<C-j>"] = cmp.mapping.select_next_item(),
+          ["<C-k>"] = cmp.mapping.select_prev_item(),
+          ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+          ["<S-CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+          ["<C-CR>"] = function(fallback)
+            cmp.abort()
+            fallback()
+          end,
+        }),
+        sources = cmp.config.sources({
+          { name = "copilot", group_index = 2 },
+          { name = "nvim_lsp" },
+          { name = "path" },
+        }, {
+          { name = "buffer" },
+        }),
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = "symbol",
+            max_width = 50,
+            symbol_map = { Copilot = "" },
+          }),
+        },
+        experimental = {
+          ghost_text = {
+            hl_group = "CmpGhostText",
+          },
+        },
+        sorting = defaults.sorting,
+      }
     end,
   },
 
