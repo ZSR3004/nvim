@@ -9,7 +9,8 @@ return {
           "lua",
           "python",
           "bash",
-          "c"
+          "c",
+          "typescript"
         },
         highlight = {
           enable = true,
