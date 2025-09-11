@@ -8,6 +8,7 @@ return {
         ensure_installed = {
           "lua",
           "python",
+          "ocaml",
           "bash",
           "c",
           "typescript"
