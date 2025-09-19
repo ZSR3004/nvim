@@ -21,6 +21,7 @@ return {
           },
         },
         filetypes = {
+          tex = false,
           yaml = false,
           markdown = false,
           help = false,
