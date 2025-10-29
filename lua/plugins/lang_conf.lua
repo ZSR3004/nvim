@@ -12,6 +12,8 @@ return {
 
   { -- Treesitter
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    build = ":TSUpdate",
   },
 
   { -- LSP Config
