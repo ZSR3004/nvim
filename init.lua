@@ -13,3 +13,7 @@ opt.expandtab=true
 -- Line Numbers --
 vim.wo.number = true
 vim.wo.relativenumber = true
+
+-- Theming --
+opt.background = "dark"
+vim.cmd("colorscheme oxocarbon")
