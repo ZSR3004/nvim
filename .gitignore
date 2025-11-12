@@ -1,2 +1,5 @@
 # LaTeX template for basic articles
 LuaSnip/tex/article_template.tex
+
+# Machine code
+lazy-lock.json
