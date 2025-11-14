@@ -17,3 +17,7 @@ vim.wo.relativenumber = true
 -- Theming --
 opt.background = "dark"
 vim.cmd("colorscheme oxocarbon")
+
+-- Keybinds --
+vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
+
