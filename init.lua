@@ -1,8 +1,11 @@
-require("config.lazy")
+--- Neovim Init ---
 
 -- Local Variables --
 local opt=vim.opt
 local bo=vim.bo
+
+-- Lazy Package Manager Setup --
+require("config.lazy")
 
 -- Tab Sizes --
 opt.tabstop=2
@@ -19,6 +22,4 @@ opt.background = "dark"
 vim.cmd("colorscheme oxocarbon")
 
 -- Keybinds --
-vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save file" })
-vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Close buffer" })
-vim.keymap.set("n", "<leader>t", ":terminal<CR>", { desc = "Open terminal" })
+require("keybinds")
