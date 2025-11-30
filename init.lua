@@ -18,8 +18,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- Theming --
-opt.background = "dark"
-vim.cmd("colorscheme oxocarbon")
+vim.cmd("colorscheme christmas")
 
 -- Keybinds --
 require("keybinds")
