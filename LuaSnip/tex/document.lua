@@ -7,7 +7,7 @@ local d = ls.dynamic_node
 local sn = ls.snippet_node
 
 return {
-  
+
   -- Root File Marker
   s("inp", {
     t({"%! TEX root = "}),
