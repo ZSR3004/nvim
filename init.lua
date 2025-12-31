@@ -22,3 +22,7 @@ vim.cmd("colorscheme oxocarbon")
 
 -- Keybinds --
 require("keybinds")
+
+-- Concealment --
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = ""
