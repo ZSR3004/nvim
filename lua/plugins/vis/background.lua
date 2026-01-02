@@ -1,8 +1,8 @@
 return {
 
-  { -- Transparent Background
-    "xiyaowong/transparent.nvim",
-  },
+  -- { -- Transparent Background
+  --   "xiyaowong/transparent.nvim",
+  -- },
 
   { -- Deadcolumn
     -- BUG: Deadcolumn isn't showing even when transparent background off.
