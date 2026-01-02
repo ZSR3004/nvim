@@ -19,6 +19,7 @@ vim.wo.relativenumber = true
 
 -- Theming --
 vim.cmd("colorscheme oxocarbon")
+vim.opt.termguicolors = true
 
 -- Keybinds --
 require("keybinds")
