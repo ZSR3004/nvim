@@ -30,22 +30,23 @@ return {
   { -- Treesitter
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
-    branch = 'main',
     build = ':TSUpdate',
-    opts = {
-      highlight = { enable = true, },
-    },
-    config = function(_, opts)
-      require("nvim-treesitter.config").setup(opts)
+    config = function (_, opts)
+      local ts = require("nvim-treesitter")
+      ts.setup()
 
-      vim.keymap.set(
-        "n", "<leader>d",
-        function()
-          vim.diagnostic.open_float(nil, { scope = 'line', focusable = true })
+      -- TODO: Automate language collection so that it just installs it by default.
+      local filetypes = { 'python', 'c', 'rust', 'ocaml', 'markdown', 'tex'}
+      vim.api.nvim_create_autocmd('FileType', {
+          pattern = filetypes,
+          callback = function()
+          vim.treesitter.start()
+          -- TODO: Fix folding behavior
+          -- vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          -- vim.wo[0][0].foldmethod = 'expr'
         end,
-        { desc = "Open diagnostic float for current line" }
-        )
+      })
     end
-  }
+  },
 
 }
