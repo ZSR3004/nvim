@@ -2,7 +2,6 @@
 
 -- Local Variables --
 local opt=vim.opt
-local bo=vim.bo
 
 -- Lazy Package Manager Setup --
 require("config.lazy")
