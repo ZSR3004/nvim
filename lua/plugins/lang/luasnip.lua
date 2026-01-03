@@ -6,6 +6,7 @@ return {
     build = "make install_jsregexp",
     opts = {
       enabled_autosnippets = true,
+      update_events = 'TextChanged,TextChangedI',
     },
     config = function (_, opts)
       require("luasnip").config.set_config(opts)
