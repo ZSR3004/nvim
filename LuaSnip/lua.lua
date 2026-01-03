@@ -32,4 +32,34 @@ return {
       { i(1) }
     )
   ),
+
+  s({trig="sn", dscr="Creates an empty LuaSnip snippet."},
+    fmta(
+      [=[
+        s({trig="<>", dscr="<>"}
+          fmta (
+            [[
+              <>
+            ]],
+            {<>}
+          )
+        ),
+      ]=],
+      {i(1), i(2), i(3), i(4)}
+    )
+  ),
+
+  s({trig = "vk", dscr = "Snippet for vim.keymap.set(...)."},
+    fmta(
+      [[
+        vim.keymap.set("<>", "<>", "<>", { desc = "<>" })
+      ]],
+      {
+        i(1, "Event"),
+        i(2, "Keybind"),
+        i(3, "Command"),
+        i(4, "Description"),
+      }
+    )
+  ),
 }
