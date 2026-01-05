@@ -14,10 +14,10 @@ return {
     fmta(
       [[
       def <>(<>) ->> <>:
-        """
-        <>
-        """
-        raise NotImplementedError
+          """
+          <>
+          """
+          raise NotImplementedError
 
       ]],
       {
@@ -33,10 +33,10 @@ return {
     fmta(
       [[
       def <>(self, <>) ->> <>:
-        """
-        <>
-        """
-        raise NotImplementedError
+          """
+          <>
+          """
+          raise NotImplementedError
 
       ]],
       {
@@ -52,7 +52,7 @@ return {
     fmta (
       [[
         for <> in range(<>, <>):
-          <>
+            <>
       ]],
       {i(1, "i"), i(2, "start"), i(3, "end"), i(0)}
     )
@@ -62,7 +62,7 @@ return {
     fmta (
       [[
         if <>:
-          <>
+            <>
       ]],
       {i(1, "condition"), i(2, "pass")}
     )
@@ -72,7 +72,7 @@ return {
     fmta (
       [[
         elif <>:
-          <>
+            <>
       ]],
       {i(1, "condition"), i(2, "pass")}
     )
@@ -82,7 +82,7 @@ return {
     fmta (
       [[
         else:
-          <>
+            <>
       ]],
       {i(1)}
     )

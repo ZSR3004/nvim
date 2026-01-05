@@ -15,7 +15,7 @@ return {
     fmta (
       [[
         fn <>(<>) ->> <> {
-          todo!()
+            todo!()
         }
 
       ]],
@@ -27,7 +27,7 @@ return {
     fmta (
       [[
         struct <> {
-          <>
+            <>
         } 
       ]],
       {i(1), i(2)}
@@ -38,7 +38,7 @@ return {
     fmta (
       [[
         enum <> {
-          <>
+            <>
         } 
       ]],
       {i(1), i(2)}
@@ -61,7 +61,7 @@ return {
     fmta (
       [[
         if <> {
-          <>
+            <>
         }
       ]],
       {i(1, "cond"), i(0)}
@@ -72,7 +72,7 @@ return {
     fmta (
       [[
         else if <> {
-          <>
+            <>
         }
       ]],
       {i(1, "cond"), i(0)}
@@ -83,7 +83,7 @@ return {
     fmta (
       [[
         else {
-          <>
+            <>
         }
       ]],
       {i(1)}
@@ -94,7 +94,7 @@ return {
     fmta (
       [[
         while <> {
-          <>
+            <>
         }
       ]],
       {i(1, "cond"), i(2)}
@@ -105,7 +105,7 @@ return {
     fmta (
       [[
         for <> (<>..<>) {
-          <>
+            <>
         }
       ]],
       {i(1, "i"), i(2, "start"), i(3, "end"), i(4)}
